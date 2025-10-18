@@ -31,6 +31,13 @@
     background-color: var(--game-card-bg);
 }
 
+.game-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
 .game-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -48,10 +55,17 @@
     color: var(--text-color);
     border-radius: 0.5rem;
     border: none;
+    outline: none;
     border-bottom: 1px solid #d1d1d1;
     border-right: 1px solid #d1d1d1;
-    box-shadow: 0 2px 0 #d1d1d1;
+    box-shadow: 2px 2px 2px #d1d1d1;
     padding: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.game-card:hover {
+    background-color: #fffa;
+    border: 1px solid #0004;
 }
 
 .game-card:disabled {

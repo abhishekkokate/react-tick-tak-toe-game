@@ -35,9 +35,16 @@ function App() {
                 </div>
                 <div className="game-container">
                     <div className="game-actions">
-                        <h3 className="turn-indicator">
+                        <h2 className="turn-indicator">
                             Player <span className={turnOf === "X" ? "player-X" : "player-O"}>{turnOf}</span>'s Turn
-                        </h3>
+                        </h2>
+                        <button
+                            onClick={() => {
+                                initializeGame();
+                            }}
+                        >
+                            Reset
+                        </button>
                     </div>
                     <div className="game-content">
                         {board.map((item, index) => {
