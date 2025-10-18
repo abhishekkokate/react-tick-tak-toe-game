@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --game-card-bg: #d3dfed;
+}
+
+.player-X {
+    color: #e74c3c !important;
+}
+
+.player-O {
+    color: #3498db !important;
+}
+
+.game-container {
+    width: 400px;
+    height: 600px;
+    max-width: 100vw;
+    text-align: center;
+    margin: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 10px #fff2;
+    background-color: var(--game-card-bg);
+}
+
+.game-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.game-card {
+    height: 80px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: var(--text-color);
+    border-radius: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #d1d1d1;
+    border-right: 1px solid #d1d1d1;
+    box-shadow: 0 2px 0 #d1d1d1;
+    padding: 0.5rem;
+}
+
+.game-card:disabled {
+    /* background-color: #fffa; */
+    pointer-events: none;
+}
