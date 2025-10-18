@@ -38,6 +38,11 @@
     margin-bottom: 1rem;
 }
 
+.game-actions button {
+    background-color: #f1c40f;
+    color: #333333;
+}
+
 .game-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
