@@ -40,7 +40,7 @@ function App() {
                         </h2>
                         <button
                             onClick={() => {
-                                initializeGame();
+                                resetGame();
                             }}
                         >
                             Reset
