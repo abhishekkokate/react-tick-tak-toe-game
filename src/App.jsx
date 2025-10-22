@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import IconClose from "./assets/icons/close.svg";
 
 function App() {
     const [board, setBoard] = useState(Array(9).fill(null));
+    const [winningCombinations, setWinningCombinations] = useState([[0, 1, 2]]);
     const [turnOf, setTurnOf] = useState("X");
+    const [gameWinner, setGameWinner] = useState(false);
 
     const initializeGame = () => {
         setBoard(Array(9).fill(null));
@@ -12,6 +15,14 @@ function App() {
     const resetGame = () => {
         initializeGame();
         setTurnOf("X");
+    };
+
+    const calcGameOutput = () => {
+        for (let combination of winningCombinations) {
+            if (board[combination[0]] && board[combination[0]] === board[combination[1]] && board[combination[1]] === board[combination[2]]) {
+                setGameWinner(board[combination[0]]);
+            }
+        }
     };
 
     const setMove = (index) => {
@@ -26,6 +37,10 @@ function App() {
         });
         setTurnOf(turnOf === "X" ? "O" : "X");
     };
+
+    useEffect(() => {
+        calcGameOutput();
+    }, [board]);
 
     return (
         <>
@@ -64,6 +79,39 @@ function App() {
                     </div>
                     <div className="game-scores"></div>
                 </div>
+                {gameWinner && (
+                    <div className="game-end-container">
+                        {/* <span
+                            className="game-end-close"
+                            onClick={() => {
+                                setGameWinner(false);
+                            }}
+                        >
+                            <img src={IconClose} alt="close" />
+                        </span> */}
+                        <div className="game-end-title">
+                            <h2>Game Over!</h2>
+                        </div>
+                        <div className="game-end-output">
+                            {["X", "O"].includes(gameWinner) ? (
+                                <h2 className={gameWinner === "X" ? "player-X" : "player-O"}>Player {gameWinner} Wins</h2>
+                            ) : (
+                                <h2 className="player-none">Its a Draw!</h2>
+                            )}
+                        </div>
+                        <div className="game-end-actions">
+                            <button
+                                className="game-end-restart"
+                                onClick={() => {
+                                    resetGame();
+                                    setGameWinner(false);
+                                }}
+                            >
+                                Play Again
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
         </>
     );
