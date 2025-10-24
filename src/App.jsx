@@ -4,7 +4,16 @@ import IconClose from "./assets/icons/close.svg";
 
 function App() {
     const [board, setBoard] = useState(Array(9).fill(null));
-    const [winningCombinations, setWinningCombinations] = useState([[0, 1, 2]]);
+    const [winningCombinations, setWinningCombinations] = useState([
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ]);
     const [turnOf, setTurnOf] = useState("X");
     const [gameWinner, setGameWinner] = useState(false);
 
